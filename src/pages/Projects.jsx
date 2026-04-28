@@ -1,0 +1,105 @@
+import { Github, ExternalLink } from "lucide-react";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
+import project1 from "@/assets/projects_img/project-1.png";
+import project2 from "@/assets/projects_img/project-2.png";
+import project3 from "@/assets/projects_img/project-3.png";
+import project4 from "@/assets/projects_img/project-4.png";
+
+const projects = [
+  {
+    title: "Weather App",
+    description:" A sleek weather application built with React and Chakra UI, utilizing the OpenWeather API to provide real-time weather updates and forecasts in a visually appealing interface.",
+    image: project1,
+    github: "https://github.com/deepak10100/weather-app",
+    live: "https://weather-app-six-green-76.vercel.app/",
+    tags: [
+      "React",
+      "axios",
+      "Node",
+      "JavaScript",
+      "openweather API",
+      "Chakra UI",
+    ],
+  },
+  {
+    title: "Todo App & Github User Search",
+    description:" A versatile React application that combines a Todo List for task management and a Github User Search feature, allowing users to efficiently organize their tasks while also exploring Github profiles seamlessly.",
+    image: project3,
+    github: "https://github.com/deepak10100/react-projects",
+    live: "https://react-projects-jet-three.vercel.app/",
+    tags: [
+     
+      "React Icons",
+      "React",
+      "Node",
+      "Bootstrap",
+      "GitHub Users API"
+      
+    ],
+  },
+ 
+];
+
+const Projects = () => {
+  return (
+    <div className="min-h-screen pt-20 px-4 max-w-6xl mx-auto pb-20">
+      <ScrollAnimation>
+        <h2 className="text-4xl font-bold mb-12 gradient-text">
+          Featured Projects
+        </h2>
+      </ScrollAnimation>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project) => (
+          <ScrollAnimation key={project.title}>
+            <div className="bg-gray-800/50 rounded-lg overflow-hidden backdrop-blur-sm h-full flex flex-col">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6 flex flex-col flex-grow">
+                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                <p className="text-gray-400 mb-4 flex-grow">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-1 text-sm bg-purple-500/20 rounded"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex space-x-4">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-1 text-gray-300 hover:text-white transition-colors"
+                  >
+                    <Github className="w-4 h-4" />
+                    <span>Code</span>
+                  </a>
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-1 text-gray-300 hover:text-white transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>Live</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </ScrollAnimation>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Projects;
